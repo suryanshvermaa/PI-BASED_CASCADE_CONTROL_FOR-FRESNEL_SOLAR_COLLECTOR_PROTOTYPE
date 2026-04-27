@@ -1,9 +1,2 @@
-import { API_URL } from './config';
-
-export async function fetchLatestData() {
-  const res = await fetch(`${API_URL}/data`);
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`);
-  }
-  return res.json();
-}
+// Backward-compat re-export — new code should import from '../services/api'
+export { fetchLatestData } from '../services/api';

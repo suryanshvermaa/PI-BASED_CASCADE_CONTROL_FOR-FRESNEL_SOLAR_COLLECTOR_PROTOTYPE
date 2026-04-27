@@ -1,1 +1,2 @@
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Backward-compat re-export — new code should import from '../services/config'
+export { API_URL } from '../services/config';
