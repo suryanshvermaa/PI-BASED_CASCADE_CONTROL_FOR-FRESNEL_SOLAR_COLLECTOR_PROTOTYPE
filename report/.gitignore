@@ -1,0 +1,12 @@
+*.pdf
+*.aux
+*.lof
+*.log
+*.out
+*.toc
+*.lot
+*.bbl
+*.blg
+*.run.xml
+*.synctex.gz
+*.vrb
