@@ -43,7 +43,7 @@ function AppShell() {
   const pageTitle = PAGE_TITLES[location.pathname] ?? 'Dashboard';
 
   const sensorState = useSensorData();
-  const { sensorData, socketConnected } = sensorState;
+  const { sensorData, overallConnected, socketConnected } = sensorState;
   const modeLabel = sensorData?.mode === 'REAL' ? 'LIVE' : 'MOCK';
 
   return (
@@ -55,7 +55,7 @@ function AppShell() {
       <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
         <Topbar
           title={pageTitle}
-          socketConnected={socketConnected}
+          overallConnected={overallConnected}
           modeLabel={modeLabel}
           onToggleTheme={handleToggleTheme}
           isDark={isDark}

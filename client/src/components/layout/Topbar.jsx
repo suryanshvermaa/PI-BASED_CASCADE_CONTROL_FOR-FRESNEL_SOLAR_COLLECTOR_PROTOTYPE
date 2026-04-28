@@ -1,6 +1,6 @@
 import { Bell, Sun, Moon, User, Wifi, WifiOff } from 'lucide-react';
 
-export default function Topbar({ title, socketConnected, modeLabel, onToggleTheme, isDark }) {
+export default function Topbar({ title, overallConnected, modeLabel, onToggleTheme, isDark }) {
   return (
     <header className="h-14 flex items-center justify-between px-6 border-b border-theme-subtle bg-theme-sidebar/80 backdrop-blur-sm sticky top-0 z-30">
       {/* Page title */}
@@ -11,13 +11,13 @@ export default function Topbar({ title, socketConnected, modeLabel, onToggleThem
         {/* WS connection badge */}
         <div className={`
           hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border transition-all duration-300
-          ${socketConnected
+          ${overallConnected
             ? 'border-success/25 bg-success/10 text-success'
             : 'border-danger/25  bg-danger/10  text-danger'}
         `}>
-          {socketConnected ? <Wifi className="h-3 w-3" /> : <WifiOff className="h-3 w-3" />}
+          {overallConnected ? <Wifi className="h-3 w-3" /> : <WifiOff className="h-3 w-3" />}
           <span>{modeLabel}</span>
-          <span className={`h-1.5 w-1.5 rounded-full ${socketConnected ? 'bg-success animate-pulse-dot' : 'bg-danger'}`} />
+          <span className={`h-1.5 w-1.5 rounded-full ${overallConnected ? 'bg-success animate-pulse-dot' : 'bg-danger'}`} />
         </div>
 
         {/* Notifications */}
