@@ -11,7 +11,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{booktabs}
-\usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks,hypertexnames=false]{hyperref}
 \usepackage{natbib}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -40,7 +40,7 @@
 \raggedbottom
 
 % Title Information
-\title{\textbf{PROPORTIONAL - BASED CASCADE CONTROL FOR \\ FRESNEL SOLAR COLLECTOR \\ PROTOTYPE FOR WASTEWATER \\ RECLAMATION}}
+\title{\textbf{Prototype of Solar Based \\ Waste Water Reclaiming System}}
 \author{Suryansh Verma, Karni Kumar Snehal, Sabbani Mahesh}
 \date{29 April, 2026}
 
@@ -49,9 +49,12 @@
 % Title Page
 \begin{titlepage}
     \centering
-    \vspace*{0.5cm}
+  \vspace*{0.5cm}
+
+  \includegraphics[width=0.36\textwidth]{assets/NITP_LOGO.png}\par
+  \vspace{0.6cm}
     
-    {\Huge \textbf{PROPORTIONAL - BASED CASCADE CONTROL FOR \\[0.5em] FRESNEL SOLAR COLLECTOR \\[0.5em] PROTOTYPE FOR WASTEWATER \\[0.5em] RECLAMATION} \par}
+    {\Huge \textbf{Prototype of Solar Based \\[0.5em] Waste Water Reclaiming System} \par}
     \vspace{1.0cm}
     
     {\Large \textbf{Electrical Engineering Minor Project} \par}
@@ -80,7 +83,7 @@
 
 % Abstract
 \chapter*{Abstract}
-The integration of solar thermal energy in industrial processes offers a sustainable alternative to conventional energy sources, particularly for energy-intensive applications like wastewater reclamation. This minor project focuses on the development of a proportional-based cascade control system for a Fresnel solar collector prototype, designed specifically for water treatment. The primary objective is to maintain an optimal temperature differential across the solar collector by dynamically adjusting the fluid flow rate. The electrical hardware comprises an Arduino microcontroller, DS18B20 digital temperature sensors, a flow rate sensor, and an L298N motor driver controlling a pump via Pulse Width Modulation (PWM). A proportional-based control algorithm was implemented to process real-time sensor feedback and adjust the motor speed accordingly, ensuring thermal stability. To facilitate system monitoring and evaluation, a lightweight Full-Stack IoT dashboard was also integrated, utilizing Node.js for serial communication and React for real-time visualization. The prototype successfully demonstrates a cost-effective, robust, and scalable electrical control solution for solar thermal systems, paving the way for advanced automation in large-scale wastewater treatment facilities.
+The integration of solar thermal energy in industrial processes offers a sustainable alternative to conventional energy sources, particularly for energy-intensive applications like wastewater reclamation. This minor project focuses on the development of a proportional-based closed-loop control system for a Fresnel solar collector prototype, designed specifically for water treatment. The primary objective is to maintain an optimal temperature differential across the solar collector by dynamically adjusting the fluid flow rate. The electrical hardware comprises an Arduino microcontroller, DS18B20 digital temperature sensors, a flow rate sensor, and an L298N motor driver controlling a pump via Pulse Width Modulation (PWM). A proportional-based control algorithm was implemented to process real-time sensor feedback and adjust the motor speed accordingly, ensuring thermal stability. To facilitate system monitoring and evaluation, a lightweight Full-Stack IoT dashboard was also integrated, utilizing Node.js for serial communication and React for real-time visualization. The prototype successfully demonstrates a cost-effective, robust, and scalable electrical control solution for solar thermal systems, paving the way for advanced automation in large-scale wastewater treatment facilities.
 
 % Table of Contents
 \tableofcontents
@@ -108,7 +111,7 @@ Key challenges in existing Wastewater Treatment plants include:
 Recent advancements in electrical engineering, control systems, and solar energy integration have provided a foundation for addressing the aforementioned challenges. This section reviews five key papers focusing on WWTP design, operation, and control:
 
 \begin{enumerate}
-    \item \textbf{PI-based cascade control for Fresnel solar collectors in wastewater reclamation} \citep{rodriguez2024}: This study presents a demonstration-scale integration of a 36-m$^2$ Fresnel solar collector used for water disinfection. The authors implemented a PI-based cascade control approach for the automatic operation of the photoreactor, successfully achieving EU water quality standards while maintaining operational temperatures up to 60$^\circ$C.
+    \item \textbf{PI-based control for Fresnel solar collectors in wastewater reclamation} \citep{rodriguez2024}: This study presents a demonstration-scale integration of a 36-m$^2$ Fresnel solar collector used for water disinfection. The authors implemented a PI-based control approach for the automatic operation of the photoreactor, successfully achieving EU water quality standards while maintaining operational temperatures up to 60$^\circ$C.
     \item \textbf{An intelligent cloud-enabled system for water quality index prediction of sewage treatment plant using deep learning models} \citep{riya2025}: Riya et al. developed a sophisticated cloud-based infrastructure integrating IoT sensors and deep learning models to predict the water quality index in sewage treatment plants, showcasing the power of modern data acquisition and predictive modeling.
     \item \textbf{Assessment of microbial water treatment by direct solar radiation disinfection approach} \citep{kopesa2024}: Kopesa et al. investigated the efficacy of solar sterilization. Their research demonstrated that direct solar radiation could successfully eliminate microbial loads (reducing CFU to zero) when subjected to adequate thermal conditions (above 44.5$^\circ$C) and exposure time, underscoring the importance of temperature monitoring.
     \item \textbf{Demonstration-scale urban wastewater reclamation using concentrated solar radiation} \citep{rodriguez2025}: This recent paper explores the enhancement of solar disinfection (SODIS) through concentrated solar technology at a demonstration scale. It highlights how integrating renewable solar energy reduces operational costs and enables efficient wastewater reclamation for crop irrigation.
@@ -116,17 +119,17 @@ Recent advancements in electrical engineering, control systems, and solar energy
 \end{enumerate}
 
 \section{Motivation and key reasearch gaps}
-The transition of wastewater treatment plants from mere disposal facilities to energy-autonomous water resource recovery facilities requires innovative electrical control approaches. While biological processes are well-studied, the integration of renewable thermal energy, specifically solar thermal energy via Fresnel collectors, remains underutilized due to the complexities involved in controlling the inherent variability of solar irradiance. The existing literature demonstrates the potential of solar thermal applications and advanced control strategies like cascade control. However, there is a notable gap in accessible, low-cost, and easily deployable electrical control prototypes that can manage these systems in real-time. 
+The transition of wastewater treatment plants from mere disposal facilities to energy-autonomous water resource recovery facilities requires innovative electrical control approaches. While biological processes are well-studied, the integration of renewable thermal energy, specifically solar thermal energy via Fresnel collectors, remains underutilized due to the complexities involved in controlling the inherent variability of solar irradiance. The existing literature demonstrates the potential of solar thermal applications and advanced control strategies for real-time thermal regulation. However, there is a notable gap in accessible, low-cost, and easily deployable electrical control prototypes that can manage these systems in real-time. 
 
 Key research gaps include:
 \begin{itemize}
-    \item Lack of low-cost, microcontroller-based cascade control solutions tailored for small-scale solar thermal collectors in WWTPs.
+    \item Lack of low-cost, microcontroller-based closed-loop control solutions tailored for small-scale solar thermal collectors in WWTPs.
     \item Insufficient empirical studies on the dynamic electrical response (PWM-based flow control) of Fresnel collectors under simple PI algorithms.
     \item A missing link between classical electrical process control (PI) and modern IoT data-logging and monitoring interfaces.
 \end{itemize}
 
 \section{Present Work and contribution}
-This minor project develops a complete electrical control prototype for regulating a Fresnel solar collector intended for wastewater treatment applications. The system utilizes a proportional-based cascade control strategy deployed on an Arduino microcontroller to regulate the flow rate of water through the collector based on real-time temperature differentials. To complement the electrical hardware and demonstrate modern data acquisition, a lightweight IoT dashboard was developed, enabling real-time visualization and remote monitoring of the control signals. 
+This minor project develops a complete electrical control prototype for regulating a Fresnel solar collector intended for wastewater treatment applications. The system utilizes a proportional-based closed-loop control strategy deployed on an Arduino microcontroller to regulate the flow rate of water through the collector based on real-time temperature differentials. To complement the electrical hardware and demonstrate modern data acquisition, a lightweight IoT dashboard was developed, enabling real-time visualization and remote monitoring of the control signals. 
 
 The key contributions of this work are:
 \begin{itemize}
@@ -195,12 +198,12 @@ The primary objective of the electrical control scheme is to maintain an optimal
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{assets/ControlSystemDiagram.png}
-    \caption{Proportional-Based Control System Block Diagram}
+    \includegraphics[width=0.8\textwidth]{assets/ControlSystemDiagram.jpeg}
+    \caption{Closed-Loop Proportional-Based Control System Block Diagram}
     \label{fig:control_diagram}
 \end{figure}
 
-As shown in the block diagram (Figure \ref{fig:control_diagram}), a closed-loop proportional-based control logic is implemented to mitigate this. For this minor project prototype, a robust Proportional control approach was emphasized, acting as the primary responsive element in the cascade setup. A base motor speed ($PWM_{base}$) is defined to maintain a minimum continuous fluid flow, ensuring the sensors always read active fluid temperatures rather than stagnant pockets. 
+As shown in the block diagram (Figure \ref{fig:control_diagram}), a closed-loop proportional-based control logic is implemented to mitigate this. For this minor project prototype, a robust Proportional control approach was emphasized, acting as the primary responsive element in the overall feedback loop. A base motor speed ($PWM_{base}$) is defined to maintain a minimum continuous fluid flow, ensuring the sensors always read active fluid temperatures rather than stagnant pockets. 
 
 The control algorithm calculates the error, defined as the difference between the outlet and inlet temperatures ($\Delta T = T_{out} - T_{in}$). A proportional gain ($K_p = 15.0$) is then applied to this error. As the temperature difference increases, the controller proportionally increases the motor speed to pump more water, absorbing the excess thermal energy.
 
@@ -222,7 +225,7 @@ The calculated $PWM_{value}$ is then mathematically constrained to the permissib
   // Ignore negative difference
   if (deltaTemp < 0) deltaTemp = 0;
 
-  // Proportional-based Cascade Control
+    // Proportional control
   // Speed increases with temp difference
   float control = Kp * deltaTemp;
 
@@ -235,7 +238,7 @@ The calculated $PWM_{value}$ is then mathematically constrained to the permissib
   analogWrite(ENA, pwmValue);
 \end{lstlisting}
 
-This cascade mechanism allows the primary variable (temperature) to directly manipulate the secondary variable (flow rate), ensuring rapid disturbance rejection and maintaining process stability.
+This control relationship allows the primary variable (temperature) to directly influence the actuator command (motor PWM), which in turn changes the flow rate, improving disturbance rejection and maintaining process stability.
 
 \chapter{Results and Discussion}
 The performance of the proportional-based control system was evaluated by observing the real-time interaction between the temperature sensors and the motor PWM output. 
@@ -294,9 +297,9 @@ As seen in Figure \ref{fig:demo_grid}, multiple angles of the working prototype 
 \end{figure}
 
 \chapter{Conclusion and future Scope}
-This minor project successfully demonstrated the design and implementation of a proportional-based cascade control system for a Fresnel solar collector prototype. From an electrical engineering perspective, the system efficiently integrates digital sensors (DS18B20, Hall-effect) with robust actuator control (PWM via L298N) using an Arduino microcontroller. The chosen proportional control algorithm effectively regulated the fluid flow based on dynamic thermal differentials, mimicking the rigorous demands of wastewater disinfection and energy reclamation processes. Furthermore, the inclusion of a full-stack IoT dashboard showcased how classical process control can be seamlessly paired with modern web technologies for advanced real-time monitoring and data logging.
+This minor project successfully demonstrated the design and implementation of a proportional-based closed-loop control system for a Fresnel solar collector prototype. From an electrical engineering perspective, the system efficiently integrates digital sensors (DS18B20, Hall-effect) with robust actuator control (PWM via L298N) using an Arduino microcontroller. The chosen proportional control algorithm effectively regulated the fluid flow based on dynamic thermal differentials, mimicking the rigorous demands of wastewater disinfection and energy reclamation processes. Furthermore, the inclusion of a full-stack IoT dashboard showcased how classical process control can be seamlessly paired with modern web technologies for advanced real-time monitoring and data logging.
 
-Future scope for this project includes expanding the control algorithm to a full PID or Model Predictive Control (MPC) system to handle more complex thermal dynamics and predictive solar tracking. Electrically, the motor driver could be upgraded to an industrial-grade Variable Frequency Drive (VFD) for operating larger AC pumps. Additionally, implementing edge-computing algorithms on the microcontroller to detect sensor faults automatically and transitioning to wireless data transmission protocols (such as LoRa or ESP32-based Wi-Fi) would make the system highly suitable for decentralized, large-scale wastewater treatment facilities.
+Future scope for this project includes expanding the control algorithm to a full PID or Model Predictive Control (MPC) system to handle more complex thermal dynamics and predictive solar tracking. A logical next step is to implement a cascade control architecture, with an outer temperature-difference loop generating a setpoint for an inner flow-rate or motor-speed loop, improving robustness against sensor noise and disturbances. Electrically, the motor driver could be upgraded to an industrial-grade Variable Frequency Drive (VFD) for operating larger AC pumps. Additionally, implementing edge-computing algorithms on the microcontroller to detect sensor faults automatically and transitioning to wireless data transmission protocols (such as LoRa or ESP32-based Wi-Fi) would make the system highly suitable for decentralized, large-scale wastewater treatment facilities.
 
 % References
 \renewcommand{\bibname}{References}
@@ -306,11 +309,121 @@ Future scope for this project includes expanding the control algorithm to a full
 \small
 \setlength{\itemsep}{0pt}
 \setlength{\parskip}{0pt}
-\bibitem[Rodríguez-García et al., 2024]{rodriguez2024} Rodríguez-García, D., García Sánchez, J. L., Guzmán, J. L., Casas López, J. L., \& Sánchez Pérez, J. A. (2024). PI-based cascade control for Fresnel solar collectors in wastewater reclamation. \textit{4th IFAC Conference on Advances in Proportional-Integral-Derivative Control}.
+\bibitem[Rodríguez-García et al., 2024]{rodriguez2024} Rodríguez-García, D., García Sánchez, J. L., Guzmán, J. L., Casas López, J. L., \& Sánchez Pérez, J. A. (2024). PI-based control for Fresnel solar collectors in wastewater reclamation. \textit{4th IFAC Conference on Advances in Proportional-Integral-Derivative Control}.
 \bibitem[Riya et al., 2025]{riya2025} Riya, Bala, A., Sharma, A., \& Singh, N. (2025). An intelligent cloud-enabled system for water quality index prediction of sewage treatment plant using deep learning models. \textit{Journal of Water Process Engineering}, 78, 108787.
 \bibitem[Kopesa et al., 2024]{kopesa2024} Kopesa, F. B., Feye, M. D., Dechasa, A., Worku, M. G., \& Sorsa, O. (2024). Assessment of microbial water treatment by direct solar radiation disinfection approach. \textit{Journal of Water and Climate Change}, 15(4), 1933.
 \bibitem[Rodríguez-García et al., 2025]{rodriguez2025} Rodríguez-García, D., García Sánchez, J. L., Guzmán, J. L., Arbib, Z., Casas López, J. L., \& Sánchez Pérez, J. A. (2025). Demonstration-scale urban wastewater reclamation using concentrated solar radiation. \textit{Journal of Water Process Engineering}, 78, 108817.
 \bibitem[Nwankwo \& Ekwueme, 2024]{nwankwo2024} Nwankwo, E. J., \& Ekwueme, B. N. (2024). Modeling Escherichia coli inactivation during solar disinfection: Effects of UV intensity, water temperature, and turbidity. \textit{Solar Energy}, 283, 113000.
 \end{thebibliography}
+
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
+\section*{Arduino Source Code}
+The following is the complete C++ source code flashed to the Arduino microcontroller to handle sensor data acquisition and proportional-based control.
+
+\begin{lstlisting}[language=C++]
+#include <OneWire.h>
+#include <DallasTemperature.h>
+
+// -------- PIN CONFIG --------
+#define ONE_WIRE_BUS 3
+#define FLOW_SENSOR_PIN 2
+
+#define ENA 5
+#define IN1 8
+#define IN2 9
+
+// -------- FLOW VARIABLES --------
+volatile int pulseCount = 0;
+float flowRate = 0;
+unsigned long lastTime = 0;
+
+// -------- TEMP SETUP --------
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);
+
+// -------- CONTROL --------
+float Kp = 15.0;        // scaling factor (important)
+int baseSpeed = 150;    // minimum speed
+int pwmValue = 150;
+
+// -------- INTERRUPT --------
+void pulseCounter() {
+  pulseCount++;
+}
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(FLOW_SENSOR_PIN, INPUT);
+  attachInterrupt(digitalPinToInterrupt(FLOW_SENSOR_PIN), pulseCounter, FALLING);
+
+  pinMode(ENA, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  sensors.begin();
+}
+
+void loop() {
+
+  // -------- FLOW CALCULATION --------
+  if (millis() - lastTime >= 1000) {
+    detachInterrupt(digitalPinToInterrupt(FLOW_SENSOR_PIN));
+
+    flowRate = pulseCount / 7.5;
+
+    pulseCount = 0;
+    lastTime = millis();
+
+    attachInterrupt(digitalPinToInterrupt(FLOW_SENSOR_PIN), pulseCounter, FALLING);
+  }
+
+  // -------- TEMPERATURE --------
+  sensors.requestTemperatures();
+
+  float inletTemp  = sensors.getTempCByIndex(0);
+  float outletTemp = sensors.getTempCByIndex(1);
+
+  // -------- SENSOR ERROR --------
+  if (inletTemp == -127 || outletTemp == -127) {
+    Serial.println("{\"error\":\"sensor_not_detected\"}");
+    delay(1000);
+    return;
+  }
+
+  // -------- CONTROL LOGIC --------
+  float deltaTemp = outletTemp - inletTemp;
+
+  // Ignore negative difference
+  if (deltaTemp < 0) deltaTemp = 0;
+
+    // NOTE: Speed increases with temp difference
+  float control = Kp * deltaTemp;
+
+  pwmValue = baseSpeed + control;
+
+  // Limit to safe range
+  pwmValue = constrain(pwmValue, baseSpeed, 255);
+
+  analogWrite(ENA, pwmValue);
+
+  // -------- JSON OUTPUT --------
+  Serial.print("{");
+  Serial.print("\"flowRate\":"); Serial.print(flowRate);
+  Serial.print(",\"inletTemp\":"); Serial.print(inletTemp);
+  Serial.print(",\"outletTemp\":"); Serial.print(outletTemp);
+  Serial.print(",\"deltaTemp\":"); Serial.print(deltaTemp);
+  Serial.print(",\"pwm\":"); Serial.print(pwmValue);
+  Serial.print("}");
+  Serial.println();
+
+  delay(1000);
+}
+\end{lstlisting}
+
 
 \end{document}

@@ -1,6 +1,6 @@
-# PI-BASED CASCADE CONTROL FOR FRESNEL SOLAR COLLECTOR PROTOTYPE  
+# Prototype Of Solar Based Waste Water Reclaiming System 
 
-Full Stack Iot Based Dashboard for Fresnel Solar Collector Prototype Monitoring and Control
+Full Stack Iot Based Dashboard for Real-Time Monitoring and Control of a Solar-Based Waste Water Reclaiming System
 
 ![Dashboard Preview](./assets/DashboardDarkTheme.png)
 ---
